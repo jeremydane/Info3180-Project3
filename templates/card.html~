@@ -1,0 +1,9 @@
+<!doctype html>
+<html>
+  <body>
+    <title>Card Game</title>
+	<script src="{{ url_for('static', filename='cards.js') }}"></script>
+	<p>This is a Card Game</p>
+	<div class="sideBox"></div>    
+  </body>
+</html>

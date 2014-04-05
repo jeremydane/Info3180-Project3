@@ -1,0 +1,38 @@
+<!doctype html>
+<html manifest="manifest.appcache">
+  <body>
+    <title>A Card Game</title>
+	<script src="{{ url_for('static', filename='cards.js') }}"></script>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cards.css') }}" />
+	<img src="{{ url_for('static', filename='JDF.png') }}" alt="JDF" width="104" height="128">
+	</script>
+	<audio id="cattalk">
+  		<source src="{{ url_for('static', filename='catmeow.ogg') }}" type="audio/ogg">
+  		<source src="{{ url_for('static', filename='catmeow.mp3') }}" type="audio/mpeg">
+		<source src="{{ url_for('static', filename='catmeow.wav') }}" type="audio/wav">
+		Your browser does not support the audio element.
+	</audio>
+	<p><h1>A Card Game</h1></p>
+	
+	<div id="start">			
+		<div class="start">B E G I N</div>			
+	</div>
+	<div id="login">			
+		<div class="login">B E G I N</div>			
+	</div>
+	<p>Click START to begin</p>
+	<div id="go" class="flipper">
+    		<div class="flip-front">GO</div>
+    		<div class="flip-back">Lets</div>
+	</div>	
+	<div id=deck class="sideBox">
+	<!--<table><form name="mem"><input type="button" name="cnt" value="0:00" onclick="begin()" ></form></div>
+	-->
+		
+	</div>
+
+	
+ </body>
+  </body>
+</html>
+

@@ -1,0 +1,23 @@
+CACHE MANIFEST
+
+# version 2011-07-012 06:06:44 v1
+
+CACHE:
+static/cards.js
+
+# html files
+cards.html
+
+# css files
+static/cards.css
+
+# images
+static/JDF.png
+
+# misc
+
+FALLBACK:
+
+
+NETWORK:
+
