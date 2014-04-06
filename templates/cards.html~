@@ -1,38 +1,49 @@
 <!doctype html>
-<html manifest="manifest.appcache">
+<!--<html manifest="manifest.appcache">-->
+<html>
   <body>
-    <title>A Card Game</title>
+    <title>Card  Game</title>
+    	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
 	<script src="{{ url_for('static', filename='cards.js') }}"></script>
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cards.css') }}" />
-	<img src="{{ url_for('static', filename='JDF.png') }}" alt="JDF" width="104" height="128">
-	</script>
-	<audio id="cattalk">
-  		<source src="{{ url_for('static', filename='catmeow.ogg') }}" type="audio/ogg">
-  		<source src="{{ url_for('static', filename='catmeow.mp3') }}" type="audio/mpeg">
-		<source src="{{ url_for('static', filename='catmeow.wav') }}" type="audio/wav">
+	<img id="JDF" src="{{ url_for('static', filename='JDF.png') }}" alt="JDF" width="94" height="118">
+	
+	<audio id="flipsound">
+  		<source src="{{ url_for('static', filename='flip.ogg') }}" type="audio/ogg">
+  		<source src="{{ url_for('static', filename='flip.mp3') }}" type="audio/mpeg">		
 		Your browser does not support the audio element.
 	</audio>
-	<p><h1>A Card Game</h1></p>
-	
-	<div id="start">			
-		<div class="start">B E G I N</div>			
-	</div>
+
+	<p><h2 id="heading">JDF Card Game</h2></p>
+	<hr>
 	<div id="login">			
-		<div class="login">B E G I N</div>			
-	</div>
+		<div>Sign In</div>
+			<form action="{{ url_for('login') }}" method=post>
+				<p><input type="text" name="username" value="" placeholder="Username or Email"></p>
+				<p><input type="password" name="password" value="" placeholder="Password"></p>
+				<p class="submit"><input type="submit" value="Login"></p>
+	      		</form>
+    		</div> 
+
+    	</div> 	
+	<div id="save">			
+	 	<div class="save">Save Game</div>			
+	</div><br>
+	<div id="start">			
+		<div class="start">Start</div>			
+	</div><br>
+	<div>	
+		<h3>Turns: </h3>		
+		<div id="turns" class="turns"></div>			
+	</div>	
 	<p>Click START to begin</p>
+
 	<div id="go" class="flipper">
     		<div class="flip-front">GO</div>
     		<div class="flip-back">Lets</div>
 	</div>	
-	<div id=deck class="sideBox">
-	<!--<table><form name="mem"><input type="button" name="cnt" value="0:00" onclick="begin()" ></form></div>
-	-->
-		
-	</div>
-
-	
+	<div id=deck class="sideBox"></div>	
  </body>
-  </body>
 </html>
 

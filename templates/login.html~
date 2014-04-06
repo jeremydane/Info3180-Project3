@@ -1,0 +1,57 @@
+<!doctype html>
+<html manifest="manifest.appcache">
+  <body>
+    <title>A Card Game</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="{{ url_for('static', filename='cards.js') }}"></script>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cards.css') }}" />
+	<img src="{{ url_for('static', filename='JDF.png') }}" alt="JDF" width="104" height="128">
+	</script>
+	<audio id="flipsound">
+  		<source src="{{ url_for('static', filename='flip.ogg') }}" type="audio/ogg">
+  		<source src="{{ url_for('static', filename='flip.mp3') }}" type="audio/mpeg">
+		
+		Your browser does not support the audio element.
+	</audio>
+	<p><h1>Welcome to JDF Card Game</h1></p>
+	<hr>
+	
+	<div id="start">			
+		<div class="start">New Game</div>			
+	</div>
+	<div id="login" class="overlay">			
+		<div>Singn In</div>
+			<form method="get" action="http://project2.jf620057694.appspot.com/game">
+				<p><input type="text" name="login" value="" placeholder="Username or Email"></p>
+					<p><input type="password" name="password" value="" placeholder="Password"></p>
+					<p class="remember_me">
+			  		<label>
+			    		<input type="checkbox" name="remember_me" id="remember_me">
+			    	Remember me on this computer
+			  		</label>
+				</p>
+				<p class="submit"><input type="submit" name="commit" value="Login"></p>
+	      		</form>
+    		</div> 
+
+    		<div class="login-help">
+      		<p>Forgot your password? <a href="index.html">Click here to reset it</a>.</p>
+    		</div>			
+	</div> 
+
+	<p>Click START to begin</p>
+	<div id="go" class="flipper">
+    		<div class="flip-front">GO</div>
+    		<div class="flip-back">Lets</div>
+	</div>	
+	<div id=deck class="sideBox">
+	<!--<table><form name="mem"><input type="button" name="cnt" value="0:00" onclick="begin()" ></form></div>
+	-->
+		
+	</div>
+
+	
+	
+  </body>
+</html>
+

@@ -7,7 +7,7 @@
 	<script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
 	<script src="{{ url_for('static', filename='cards.js') }}"></script>
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cards.css') }}" />
-	<img id="JDF" src="{{ url_for('static', filename='JDF.png') }}" alt="JDF" width="94" height="118">
+	<img id="JDF" src="{{ url_for('static', filename='JDF.png') }}" alt="JDF" width="104" height="128">
 	
 	<audio id="flipsound">
   		<source src="{{ url_for('static', filename='flip.ogg') }}" type="audio/ogg">
@@ -17,25 +17,23 @@
 
 	<p><h2 id="heading">JDF Card Game</h2></p>
 	<hr>
-	<div id="login">			
-		<div>Sign In</div>
-			<form action="{{ url_for('login') }}" method=post>
-				<p><input type="text" name="username" value="" placeholder="Username or Email"></p>
-				<p><input type="password" name="password" value="" placeholder="Password"></p>
-				<p class="submit"><input type="submit" value="Login"></p>
-	      		</form>
-    		</div> 
+	<div>Sign In</div>
+		<form action="{{ url_for('login') }}" method=post>
+			<p><input type="text" name="username" value="" placeholder="Username or Email"></p>
+			<p><input type="password" name="password" value="" placeholder="Password"></p>
+			<p class="submit"><input type="submit" value="Login"></p>
+		</form>
+    	</div> 
 
-    	</div> 	
+    		
 	<div id="save">			
 	 	<div class="save">Save Game</div>			
 	</div><br>
 	<div id="start">			
 		<div class="start">Start</div>			
 	</div><br>
-	<div>	
-		<h3>Turns: </h3>		
-		<div id="turns" class="turns"></div>			
+	<div>			
+		<div id="turn" class="turns"><h3>Turns: </h3></div>			
 	</div>	
 	<p>Click START to begin</p>
 
