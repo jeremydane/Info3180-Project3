@@ -28,7 +28,7 @@
 
     	</div> 	
 	<div id="save">			
-	 	<div class="save">Save Game</div>			
+	 	<div class="save">Save</div>			
 	</div><br>
 	<div id="start">			
 		<div class="start">Start</div>			

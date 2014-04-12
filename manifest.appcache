@@ -17,8 +17,10 @@ static/cards.css
 static/JDF.png
 
 # misc
-flip.mp3
-flip.ogg
+static/flip.mp3
+static/flip.ogg
+static/chime.mp3
+static/chime.ogg
 
 FALLBACK:
 

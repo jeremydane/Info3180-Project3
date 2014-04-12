@@ -90,10 +90,7 @@ window.onload=function()
 		card = document.createElement("div");
 		card.textContent = txt;
 		card.className = "card";
-		//var typ= document.createElement("p");
-		//typ.innerHTML = txt;
-		//document.getElementsByClassName("card").appendChild(typ);
-
+		
 		document.querySelector(".flip").appendChild(card);
 
 		console.log(card);
@@ -101,9 +98,6 @@ window.onload=function()
 			
 	}
 	
-	
-
-
 	var showDeck = function(deck)
 	{
 	    var idx;
@@ -111,36 +105,23 @@ window.onload=function()
 	   {
 		    console.log("Creating your deck....",deck[idx]);
 		    showCards(deck[idx]);
-		    //showCards(deck[idx]);
+		    
 	    }
 	}
 
 	var login = function()
 	{
+		//userName
 		//localStorage["username"]= user.toString();
 		startGame();
 	}
 
-	var startGame = function()
-	{	
-		var click=0;	
-		gameScreen();					
-
-		arrangeCards();
-
-		
-		game= cardClick(click);
-		if (game==false)
-		{
-			showDeck(deck);
-		}
-			
-	}
+	
 
 	var gameScreen = function()
 	{
 		var go= document.getElementById('go');
-		//go.className = "abc";
+		
 		go.parentNode.removeChild(go);
 
 		var head= document.getElementById('heading');
@@ -157,9 +138,6 @@ window.onload=function()
 		var JDF= document.getElementById('JDF');
 		JDF.parentNode.removeChild(JDF);
 		
-		////var login= document.getElementById('login');
-		//$( "#login" ).append( "User:" );
-
 		$("#save").find('.start').addClass('save')
 	
 	}
@@ -194,65 +172,120 @@ window.onload=function()
 		}
 	}
 
-	
-        
-	var cardClick = function(clk)
-	{
-		$('.flip').click(function()
-		{
-			var game=true;
-			//var clicks = [];
-			clicks=0;
-			var flip=document.getElementById('flipsound');
-	 		flip.play();
-
-			//card= $(this).find('.card');
-			card=$(this).find('.card');
-			localStorage["turns"]= clk.toString() ;
+	var startGame = function()
+	{	
 			
-			clk=clk+1;			
-			document.getElementById('turns').innerHTML =clk;
+		gameScreen();
+		arrangeCards();
+		var turns=0;
+		var play=true;
+		var clk=0;
+		var stk=[];
+
+		if (turns<24)
+		{
+			cardClick(clk, stk);
+					
+		}
+		
+			
+	}
+        
+	var cardClick = function(clk, stk)
+	{	
+		$('.card').click(function()
+		{
+			
+			var flip=document.getElementById('flipsound');
+			flip.play();
+
+			clk++;			
+			card=$(this);
+
+			localStorage["clk"]= clk.toString() ;			
+
+			turns= Math.floor(clk/2);
+			document.getElementById('turns').innerHTML =turns;
 
 			
     			card.addClass('flipped');
+			playing(card, stk);
 			
-
-			//this.id= type(card);
-    			//clicks.push({id:card});
-			click++;
-			console.log("help",clicks);
-			if (clicks.length >1)
-			{
-    				if (clicks[0].id=clicks[1].id)
-				{
-					clicks[0].addClass('matched');
-					clicks[1].addClass('matched');
-					clicks = [];
-				}
-				else
-				{
-					clicks[0].removeClass('flipped');
-					clicks[1].removeClass('flipped');
-					clicks = [];
-				}
-
-			}
-			if (clk>=48)
-			{
-				alert("Game Over");
-				game=false;
-				
-			}	
-        		return game;
-    		     
+	
+			  		     
 			
 		});
+		
+		
+		
 	}
 
-	var type = function(card)
+	var  playing = function(card, stk)
 	{
-		return card.textContent;		
+
+		type=card[0].textContent;
+		//id=card[0].id;
+		e=card;
+		stk.push({element:e,type:type});
+		
+		faces=[];
+		if (stk.length>1)
+		{
+			x=stk[0].type;
+			y=stk[1].type;
+			faces.push(x);
+			faces.push(y);
+			
+
+			//a=stk[0].id;
+			//b=stk[1].id;
+			
+			if (paired(faces))
+			{					
+									
+				//document.getElementById(a).addClass("matched");
+				//document.getElementById(b).addClass("matched");
+
+				stk[1].element.addClass("matched");
+				stk[0].element.addClass("matched");
+
+				var same=document.getElementById('match');
+				same.play();
+				
+				faces.pop();
+				faces.pop();	
+
+			}
+			else
+			{	
+				//document.getElementById("card1").addClass("flip");
+				//document.getElementById("card2").addClass("flip");
+				for (i=0;i<2;i++)
+				{	
+					stk[i].element.removeClass("flipped");
+					
+				}
+				stk.pop();
+				stk.pop();
+			}
+
+		}		
 	}
+
+
+	var paired = function(stk)
+	{
+		if (stk[0]==stk[1])
+		{
+			
+			return true;	
+		}
+		else
+		{
+			return false;			
+		}
+	}
+
 	var saveGame = function()
 	{
 		alert("Saving Game");
