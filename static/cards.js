@@ -176,19 +176,19 @@ window.onload=function()
 	{	
 			
 		gameScreen();
+		
 		arrangeCards();
-		var turns=0;
+		$('#save').show();
+		
 		var play=true;
 		var clk=0;
 		var stk=[];
 
-		if (turns<24)
-		{
-			cardClick(clk, stk);
-					
-		}
+		$('#start').hide();
+		cardClick(clk, stk);
 		
 			
+		
 	}
         
 	var cardClick = function(clk, stk)
@@ -196,22 +196,34 @@ window.onload=function()
 		$('.card').click(function()
 		{
 			
+			
 			var flip=document.getElementById('flipsound');
 			flip.play();
-
+		
 			clk++;			
 			card=$(this);
-
-			localStorage["clk"]= clk.toString() ;			
-
+			
 			turns= Math.floor(clk/2);
-			document.getElementById('turns').innerHTML =turns;
-
+			console.log(turns);
+			if (turns<=24)
+			{
+				localStorage["turns"]= turns.toString() ;
 			
-    			card.addClass('flipped');
-			playing(card, stk);
+				document.getElementById('turns').innerHTML =turns;
 			
-	
+	    			card.addClass('flipped');
+				playing(card, stk);	
+			}
+			else
+			{
+				turns=0;
+				alert("GAMEOVER");
+				$('#start').hide();
+				startGame();
+			}
+			
+			
+			
 			  		     
 			
 		});
@@ -290,11 +302,13 @@ window.onload=function()
 	{
 		alert("Saving Game");
 		var deck = $("deck").childNodes;
+		//localStorage["game"]= deck.toString() ;
 	}
 
 	var deck = shuffle(40);
 
 	showDeck(deck);
+	$('#save').hide();
 	document.getElementById('start').onclick=login;
 	document.getElementById('save').onclick=saveGame;
 	

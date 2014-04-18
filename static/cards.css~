@@ -54,6 +54,7 @@ body
 }
 #save
 {
+	display: none;
 	width: 120px;
 	height: 55px;
 	margin: 10px;
@@ -125,7 +126,7 @@ body
   position: absolute;
   z-index: 1;
     cursor: pointer;
-    opacity: 1;
+    content:this.querySelector(".front").textContent
 }
 .flip .card .front {
   -webkit-transform: rotatey(180deg);

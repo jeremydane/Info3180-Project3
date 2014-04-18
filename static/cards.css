@@ -54,6 +54,7 @@ body
 }
 #save
 {
+	/**display: none;**/
 	width: 120px;
 	height: 55px;
 	margin: 10px;
