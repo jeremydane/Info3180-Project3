@@ -1,5 +1,6 @@
 window.onload=function()
 {
+	$('#player').hide();
 
 	var createDeck = function() 
 	{
@@ -22,13 +23,13 @@ window.onload=function()
 	    {
 	       for (k = 0; k < ranks.length; k++)
 	       {
-		  		console.log("k:",k,"index:",index);
+		  		//console.log("k:",k,"index:",index);
 		  		cards[index] = {rank:ranks[k], suite:suits[j]};
 		  		index++;
 		}
 	     }
 	   }
-	  console.log(cards.length);
+	  //console.log(cards.length);
 	  return cards;
 	}
 
@@ -103,16 +104,30 @@ window.onload=function()
 	    var idx;
 	    for (idx = 0; idx < deck.length; ++idx)
 	   {
-		    console.log("Creating your deck....",deck[idx]);
+		    //console.log("Creating your deck....",deck[idx]);
 		    showCards(deck[idx]);
 		    
 	    }
 	}
 
-	var login = function()
+	var prelim = function()
 	{
-		//userName
-		//localStorage["username"]= user.toString();
+		num=players();
+		//username=document.getElementById("player").elements["username"];
+		if (num==2)
+		{	
+			players=duo();
+		}
+		else
+		{
+			players=solo();
+		}
+			
+		$('#start').hide();
+		
+		$('#deck').show();
+		document.getElementById('sign').innerHTML =player;
+		$('#start').show();
 		startGame();
 	}
 
@@ -127,9 +142,6 @@ window.onload=function()
 		var head= document.getElementById('heading');
 		head.parentNode.removeChild(heading);
 		
-		var login= document.getElementById('login');
-		login.parentNode.removeChild(login);
-
 		var start= document.getElementById('start');
 		//start.parentNode.removeChild(start);
 		start.style.cssFloat="right";
@@ -138,7 +150,7 @@ window.onload=function()
 		var JDF= document.getElementById('JDF');
 		JDF.parentNode.removeChild(JDF);
 		
-		$("#save").find('.start').addClass('save')
+		//$("#save").find('.start').addClass('save')
 	
 	}
 	
@@ -171,7 +183,41 @@ window.onload=function()
 			
 		}
 	}
+	
+	var players=function()
+	{
+		var multiplayer= document.createElement("div");
+		multiplayer.className = "start";
+		multiplayer.id = "multi";
+		document.getElementById("co_op").appendChild(multiplayer);
+		document.getElementById('multi').innerHTML ="Multiplayer";
+		
+		document.getElementById('multi').onclick=prelim;
+		return 2;
+		
+		
+	}
+	var duo=function()
+	{
+		
+		p1 = window.prompt('Player1:'); 
+		localStorage["player1"]= p1.toString();
+		
+		p2 = window.prompt('Player2:');
+		localStorage["player2"]= p2.toString();
 
+		players=[p1,p2];
+		return 	players	
+	}
+	var solo=function()
+	{
+		p1 = window.prompt('Player1:'); 
+		localStorage["player1"]= p1.toString();
+		
+		player=[p1];
+		return player;		
+	}
+	
 	var startGame = function()
 	{	
 			
@@ -218,6 +264,7 @@ window.onload=function()
 			{
 				turns=0;
 				alert("GAMEOVER");
+				$('#start').hide();
 				startGame();
 			}
 			
@@ -305,10 +352,13 @@ window.onload=function()
 	}
 
 	var deck = shuffle(40);
-
+	var num=0;			//number of players
+	$('#deck').hide();
 	showDeck(deck);
-	$('#save').hide();
-	document.getElementById('start').onclick=login;
+	$('#save').hide();	
+	
+	document.getElementById('start').onclick=prelim;
+	//event.preventDefault();
 	document.getElementById('save').onclick=saveGame;
 	
 	 

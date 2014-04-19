@@ -7,52 +7,32 @@ import os
 import sys
 
 # sys.path includes 'server/lib' due to appengine_config.py
-from flask import Flask
+from flask import Flask, url_for
+from flask import request
 from flask import render_template
 app = Flask(__name__.split('.')[0])
-
-
-# declare values
-DATABASE = './flaskr.db' 
-DEBUG = True 
-SECRET_KEY = 'development key' 
-USERNAME = 'admin' 
-PASSWORD = 'default'
-
-#detect values using config.from_object:
-app = Flask(__name__)
-app.config.from_object(__name__)
-
-#use a value
-username = app.config['USERNAME']
-
 
 @app.route('/')
 @app.route('/<name>')
 def hello(name=None):
-  return render_template('cards.html', name=name)
+    return render_template('cards.html', name=name)
 
-@app.route('/login', methods=['GET', 'POST']) 
+
+@app.route('/login')#, methods=['POST', 'GET'])
+@app.route('/login/<name>')
 def login():
-    error = None 
-    if request.method == 'POST':
-        if request.form['username'] != app.config['USERNAME']:
-            error = 'Invalid username' 
-        elif request.form['password'] != app.config['PASSWORD']:
-            error = 'Invalid password' 
-        else: 
-            session['logged_in'] = True
-            flash('You were logged in') 
-            return redirect(url_for('show_entries')) 
-    return render_template('login.html', error=error)
+    error = None
+    session['logged_in'] = True
+    #flash('You were logged in')
+    # the code below is executed if the request method
+    # was GET or the credentials were invalid
+    return render_template('cards.html', error=error)
 
-@app.route('/logout')
-def logout(): 
-    session.pop('logged_in', None)
-    flash('You were logged out') 
-    return  redirect(url_for('show_entries'))
+def logout():
+    # remove the username from the session if it's there
+    session.pop('username', None)
+    return redirect(url_for('index'))
 
 @app.errorhandler(404)
 def page_not_found(e):
-    """Return a custom 404 error."""
-    return 'Sorry, Nothing at this URL.', 404
+     return 'Sorry, Nothing at this URL.', 404

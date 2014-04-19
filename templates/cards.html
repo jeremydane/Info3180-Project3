@@ -19,24 +19,26 @@
   		<source src="{{ url_for('static', filename='chime.mp3') }}" type="audio/mpeg">		
 		Your browser does not support the audio element.
 	</audio>
+	<div id="sign">Sign In</div>
+		<!--<form action="{{ url_for('login') }}" method=get>-->
+		<form id="player" action="" method=get>
+			<p><input type="text" name="username" value="" placeholder="Username or Email"></p>
+			<!--<p><input type="password" name="password" value="" placeholder="Password"></p>-->
+			<p class="submit"><input type="submit" value="Login"></p>
+		</form>
+    	</div> 
 	<p><h2 id="heading">JDF Card Game</h2></p>
 	<hr>
-	<div id="login">			
-		<div>Sign In</div>
-			<form action="" method=post>
-				<p><input type="text" name="username" value="" placeholder="Username or Email"></p>
-				<p><input type="password" name="password" value="" placeholder="Password"></p>
-				<p class="submit"><input type="submit" value="Login"></p>
-	      		</form>
-    		</div> 
-
-    	</div> 	
-	<div id="save">			
-	 	<div class="save">Save</div>			
-	</div><br>
+	<div id="multi">
+		<div class="save">Multiplayer</div>			
+	</div>
 	<div id="start">			
 		<div class="start">Start</div>			
 	</div><br>
+	<div id="save">			
+	 	<div class="save">Save</div>			
+	</div><br>
+	
 	<div>	
 		<h3>Turns: </h3>		
 		<div id="turns" class="turns"></div>			

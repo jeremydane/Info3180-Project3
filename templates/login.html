@@ -4,44 +4,23 @@
   <body>
     <title>Card  Game</title>
     	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='cards.js') }}"></script>
+	<script src="{{ url_for('static', filename='jquery.min.js') }}"></script>	
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cards.css') }}" />
 	<img id="JDF" src="{{ url_for('static', filename='JDF.png') }}" alt="JDF" width="104" height="128">
 	
-	<audio id="flipsound">
-  		<source src="{{ url_for('static', filename='flip.ogg') }}" type="audio/ogg">
-  		<source src="{{ url_for('static', filename='flip.mp3') }}" type="audio/mpeg">		
-		Your browser does not support the audio element.
-	</audio>
+	
 
 	<p><h2 id="heading">JDF Card Game</h2></p>
 	<hr>
 	<div>Sign In</div>
-		<form action="{{ url_for('login') }}" method=post>
+		<form action="{{ url_for('login') }}" method=get>
 			<p><input type="text" name="username" value="" placeholder="Username or Email"></p>
 			<p><input type="password" name="password" value="" placeholder="Password"></p>
 			<p class="submit"><input type="submit" value="Login"></p>
 		</form>
     	</div> 
 
-    		
-	<div id="save">			
-	 	<div class="save">Save Game</div>			
-	</div><br>
-	<div id="start">			
-		<div class="start">Start</div>			
-	</div><br>
-	<div>			
-		<div id="turn" class="turns"><h3>Turns: </h3></div>			
-	</div>	
-	<p>Click START to begin</p>
-
-	<div id="go" class="flipper">
-    		<div class="flip-front">GO</div>
-    		<div class="flip-back">Lets</div>
-	</div>	
-	<div id=deck class="sideBox"></div>	
+    
  </body>
 </html>
 
