@@ -34,6 +34,7 @@ window.onload=function()
 	}
 
 
+//shuffle cards
 	var shuffle= function(n) 
 	{
 	  var i, j, k;
@@ -53,6 +54,7 @@ window.onload=function()
 	  }
 	  return this.cards	
 	}
+
 
 
 	var showCards = function(cardJSON) 
@@ -186,11 +188,6 @@ window.onload=function()
 	
 	var players=function()
 	{
-		var multiplayer= document.createElement("div");
-		multiplayer.className = "start";
-		multiplayer.id = "multi";
-		document.getElementById("co_op").appendChild(multiplayer);
-		document.getElementById('multi').innerHTML ="Multiplayer";
 		
 		document.getElementById('multi').onclick=prelim;
 		return 2;

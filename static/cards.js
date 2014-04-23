@@ -34,6 +34,7 @@ window.onload=function()
 	}
 
 
+//shuffle cards
 	var shuffle= function(n) 
 	{
 	  var i, j, k;
@@ -53,6 +54,7 @@ window.onload=function()
 	  }
 	  return this.cards	
 	}
+
 
 
 	var showCards = function(cardJSON) 
@@ -94,10 +96,10 @@ window.onload=function()
 		
 		document.querySelector(".flip").appendChild(card);
 
-		console.log(card);
-
-			
+		console.log(card);			
 	}
+
+
 	
 	var showDeck = function(deck)
 	{
@@ -105,10 +107,11 @@ window.onload=function()
 	    for (idx = 0; idx < deck.length; ++idx)
 	   {
 		    //console.log("Creating your deck....",deck[idx]);
-		    showCards(deck[idx]);
-		    
+		    showCards(deck[idx]);		    
 	    }
 	}
+
+
 
 	var prelim = function()
 	{
